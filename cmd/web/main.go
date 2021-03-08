@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/VictorMarchenkov/booking/pkg/config"
-	"github.com/VictorMarchenkov/booking/pkg/handlers"
-	"github.com/VictorMarchenkov/booking/pkg/render"
+	"github.com/VictorMarchenkov/booking/internal/config"
+	"github.com/VictorMarchenkov/booking/internal/handlers"
+	"github.com/VictorMarchenkov/booking/internal/render"
 	"github.com/alexedwards/scs/v2"
 	"log"
 	"net/http"
@@ -12,12 +12,12 @@ import (
 )
 
 const portNumber string = ":8080"
+
 var app config.AppConfig
 var session *scs.SessionManager
 
 // main is the main application function
 func main() {
-
 
 	// change this to true when in production
 	app.InProduction = false
@@ -43,8 +43,8 @@ func main() {
 
 	fmt.Println(fmt.Sprintf("Starting application on port: %s", portNumber))
 
-	srv := http.Server {
-		Addr: portNumber,
+	srv := http.Server{
+		Addr:    portNumber,
 		Handler: routes(&app),
 	}
 
